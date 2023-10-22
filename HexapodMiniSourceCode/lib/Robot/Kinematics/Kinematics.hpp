@@ -2,9 +2,9 @@
 
 struct _3dstruct
 {
-    unsigned long  _x;
-    unsigned long  _y;
-    unsigned long  _z;
+     long  _x;
+     long  _y;
+     long  _z;
 };
 using legPos    =   _3dstruct;
 using legAngle  =   _3dstruct;
