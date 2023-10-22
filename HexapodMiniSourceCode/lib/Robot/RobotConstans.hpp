@@ -1,11 +1,5 @@
 #pragma once
 
-//enum class Leg1:    uint32_t  { joint_1 = 0, joint_2 = 1, joint_3 = 2 };
-//enum class Leg2:    uint32_t  { joint_1 = 3, joint_2 = 4, joint_3 = 5 };
-//enum class Leg3:    uint32_t  { joint_1 = 6, joint_2 = 7, joint_3 = 8 };
-//enum class Leg4:    uint32_t  { joint_1 = 9, joint_2 = 10, joint_3 = 11 };
-//enum class Leg5:    uint32_t  { joint_1 = 12, joint_2 = 13, joint_3 = 14 };
-//enum class Leg6:    uint32_t  { joint_1 = 15, joint_2 = 16, joint_3 = 17 };
 namespace Leg1
 {
    constexpr uint32_t joint_1 = 0, joint_2 = 1, joint_3 = 2 ;
@@ -37,3 +31,19 @@ namespace Leg6
     constexpr uint32_t pin_1 = 35, pin_2 = 34, pin_3 = 33 ;
 };
 constexpr unsigned int JOINTSNUMBER =   18;
+
+constexpr unsigned int  A_1   =  (5);
+constexpr unsigned int  A_2   =  (15);
+constexpr unsigned int  A_3   =  (25);//(22);
+constexpr unsigned int  E     =  (2);
+
+#define _USE_MATH_DEFINES
+#include <math.h>
+  /*
+        PI/2 and PI value based on set servos "0" posiotion 
+    */
+constexpr double rotateX=0;
+constexpr double rotateY=(M_PI/2);
+constexpr double rotateZ=M_PI;
+constexpr bool   DEG =  false;
+constexpr bool   RAD =  true;
