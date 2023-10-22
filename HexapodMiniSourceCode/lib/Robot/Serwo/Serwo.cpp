@@ -1,7 +1,9 @@
 #include "Serwo.hpp"
 #include <iterator>
+#include <utility>
 #define _USE_MATH_DEFINES
 #include <math.h>
+
 
 std::vector<std::pair<uint32_t,uint32_t>> Serwo::pwm; //first pin, second duty
 
@@ -53,7 +55,7 @@ void Serwo::PWM50Hz(void)
     }
 }
 
-void Serwo::setAngle(uint32_t angle,uint32_t joint,uint32_t type )
+void Serwo::setAngle(uint32_t angle,uint32_t joint,bool type )
 {
     /*
         Function AngleToDuty convert calculate angles to
@@ -65,7 +67,7 @@ void Serwo::setAngle(uint32_t angle,uint32_t joint,uint32_t type )
         else calculate
        // else  convert angle too duty and cut if>512(0x1FF)
     */
-   if(type == 1)
+   if(type != false)
         angle *= (180 / M_PI);
     pwm[joint].second = (angle<0) ? 100 : (angle>180) ? 500 : ((uint32_t)((angle*20/9)+100)); 
 }

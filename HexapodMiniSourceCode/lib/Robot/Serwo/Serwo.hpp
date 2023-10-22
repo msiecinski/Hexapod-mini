@@ -3,7 +3,7 @@
 #include <TimerThree.h>
 #include <vector>
 #include <array>
-#include <utility>
+
 
 //class Serwo  uses timer3
 
@@ -24,7 +24,7 @@ class Serwo
         };
         void attach(std::array<uint32_t,18> pin);
         void attach(uint32_t a);
-        void setAngle(uint32_t,uint32_t,uint32_t type = 0);
+        void setAngle(uint32_t,uint32_t,bool type = false);
     private:
         Serwo();
         static void PWM50Hz(void) ;
