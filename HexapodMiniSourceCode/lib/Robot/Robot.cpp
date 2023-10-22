@@ -1,7 +1,9 @@
 #include "Robot.hpp"
 
 Robot::Robot():
-    serwo(Serwo::getInstance())
+    type(DEG),
+    serwo(Serwo::getInstance()),
+    kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type}
 {
     legs={  Leg1::pin_1,Leg1::pin_2,Leg1::pin_3,
             Leg2::pin_1,Leg2::pin_2,Leg1::pin_3,
@@ -13,7 +15,7 @@ Robot::Robot():
     serwo.setAngle(22,Leg1::joint_1);
 }
 
-void Robot::setAngle(uint32_t angle, uint32_t joint, uint32_t type)
+void Robot::setAngle(uint32_t angle, uint32_t joint)
 { 
   serwo.setAngle(angle,joint,type);  
 }
