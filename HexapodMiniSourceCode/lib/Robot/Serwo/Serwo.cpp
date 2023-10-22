@@ -15,19 +15,23 @@ Serwo::Serwo()
 void Serwo::attach(uint32_t pin)
 {
     pwm.push_back(std::make_pair(pin,int {}));
+    pinMode(pin,OUTPUT);
 }
 
 void Serwo::attach(std::array<uint32_t,18> pin)
 {
       for(auto tmp:pin)
+      {
         pwm.push_back(std::make_pair(tmp,int {}));
+        pinMode(tmp,OUTPUT);
+      }
 }
 
 void Serwo::PWM50Hz(void)
 {   
     static volatile uint32_t counter = 0;
 
-    if(counter < (1))
+    if(counter < (INTERRUPTCOUNTER))
 		counter++;
 	else
     {
