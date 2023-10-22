@@ -17,6 +17,7 @@ class Robot
         };
         //tempolary public
         void setAngle(uint32_t angle, uint32_t joint);
+        void setPosition(int32_t x, int32_t y, int32_t z,const uint32_t* joints);
     private:
         Robot();
         std::array<uint32_t,18> legs;
@@ -26,5 +27,3 @@ class Robot
        
            
 };
-
-

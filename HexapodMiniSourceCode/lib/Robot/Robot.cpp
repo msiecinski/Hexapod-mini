@@ -12,10 +12,17 @@ Robot::Robot():
             Leg5::pin_1,Leg5::pin_2,Leg5::pin_3,
             Leg6::pin_1,Leg6::pin_2,Leg6::pin_3};
     serwo.attach(legs);
-    serwo.setAngle(22,Leg1::joint_1);
-}
+ }
 
 void Robot::setAngle(uint32_t angle, uint32_t joint)
 { 
   serwo.setAngle(angle,joint,type);  
+}
+
+void Robot::setPosition(int32_t x, int32_t y, int32_t z,const uint32_t* joints)
+{
+  legAngle tmp = kinematics.calculateAngles({x,y,z});
+  setAngle(tmp._x,joints[0]);
+  setAngle(tmp._y,joints[1]);
+  setAngle(tmp._z,joints[2]);
 }
