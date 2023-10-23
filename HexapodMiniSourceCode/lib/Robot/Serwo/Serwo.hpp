@@ -3,14 +3,22 @@
 #include <TimerThree.h>
 #include <vector>
 #include <array>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 
 //class Serwo  uses timer3
 
 constexpr int32_t CALIBRATION       =   8; 
 constexpr int32_t INTERRUPTCOUNTER  =   (4000 - CALIBRATION);   //interupt counter for 50Hz pwm
-constexpr int32_t LIMITHI           =   (INTERRUPTCOUNTER/8+1); //limit for skip conditions after every 2.5ms //11 bcs of 0x1FF
 constexpr int32_t PWMTIMEBASE       =   5;                      //time base for interrupts
+constexpr int32_t SERWOMAXDEGREES   =   180; 
+constexpr int32_t SERWOMINDEGREES   =   0; 
+constexpr int32_t SERWOMAXDUTY      =   ((INTERRUPTCOUNTER)/10);        //2ms
+constexpr int32_t SERWOMINDUTY      =   (INTERRUPTCOUNTER/20);         //1ms
+constexpr double  RESOLUTION        =   ((SERWOMAXDUTY-SERWOMINDUTY)*1.0/(SERWOMAXDEGREES-SERWOMINDEGREES));     
+constexpr double  RADT0DEG          =   (180 / M_PI);  
+
 
 //class Robot{};
 class Serwo
