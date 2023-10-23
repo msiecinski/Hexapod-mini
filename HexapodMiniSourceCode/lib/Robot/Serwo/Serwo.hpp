@@ -3,6 +3,7 @@
 #include <TimerThree.h>
 #include <vector>
 #include <array>
+#include <initializer_list>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -30,8 +31,16 @@ class Serwo
             static Serwo instance; 
             return instance;
         };
-        void attach(std::array<uint32_t,18> pin);
-        void attach(uint32_t a);
+        template<size_t SIZE>
+        void attach(std::array<uint32_t,SIZE> pins)
+        {
+            for(auto tmp:pins)
+            {
+                pwm.push_back(std::make_pair(tmp,int {}));
+                pinMode(tmp,OUTPUT);
+            }
+        };
+        void attach(const std::initializer_list<uint32_t> pinx);
         void setAngle(uint32_t,uint32_t,bool type = false);
     private:
         Serwo();

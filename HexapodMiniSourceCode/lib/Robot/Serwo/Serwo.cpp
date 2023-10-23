@@ -10,15 +10,9 @@ Serwo::Serwo()
     Timer3.attachInterrupt(PWM50Hz); 
 }
 
-void Serwo::attach(uint32_t pin)
+void Serwo::attach(const std::initializer_list<uint32_t> pinx)
 {
-    pwm.push_back(std::make_pair(pin,int {}));
-    pinMode(pin,OUTPUT);
-}
-
-void Serwo::attach(std::array<uint32_t,18> pin)
-{
-      for(auto tmp:pin)
+    for(auto tmp:pinx)
       {
         pwm.push_back(std::make_pair(tmp,int {}));
         pinMode(tmp,OUTPUT);
