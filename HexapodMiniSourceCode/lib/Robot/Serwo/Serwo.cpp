@@ -1,12 +1,8 @@
 #include "Serwo.hpp"
 #include <iterator>
 #include <utility>
-#define _USE_MATH_DEFINES
-#include <math.h>
-
 
 std::vector<std::pair<uint32_t,uint32_t>> Serwo::pwm; //first pin, second duty
-
 
 Serwo::Serwo()
 {
@@ -43,7 +39,7 @@ void Serwo::PWM50Hz(void)
             digitalWrite(tmp.first, HIGH);
         }
     }
-    if(counter < (LIMITHI+1))   //skip all by~87.5% time(17.5ms)
+    if(counter < (SERWOMAXDUTY+1))   //skip all by~90% time(18.0ms)
     {   
         for(auto tmp:pwm)
         {
@@ -61,13 +57,13 @@ void Serwo::setAngle(uint32_t angle,uint32_t joint,bool type )
         Function AngleToDuty convert calculate angles to
         duty value for pwm singnal
         100=0.5ms 
-        20/9-"equivalent" 0.45 degress
-        if angle <0 - duty lovest work value duty = 100
-        if >180 deg duty = 500
+        10/9-"equivalent" 0.90 degress
+        if angle <0 - duty lovest work value duty = 200
+        if >180 deg duty = 400
         else calculate
-       // else  convert angle too duty and cut if>512(0x1FF)
+       convert angle too duty and cut if>402(0x1FF)
     */
    if(type != false)
-        angle *= (180 / M_PI);
-    pwm[joint].second = (angle<0) ? 100 : (angle>180) ? 500 : ((uint32_t)((angle*20/9)+100)); 
+        angle *= (RADT0DEG);
+    pwm[joint].second = (angle<SERWOMINDEGREES) ? SERWOMINDUTY   : (angle>SERWOMAXDEGREES) ? SERWOMAXDUTY : ((uint32_t)((angle*RESOLUTION)+SERWOMINDUTY)); 
 }
