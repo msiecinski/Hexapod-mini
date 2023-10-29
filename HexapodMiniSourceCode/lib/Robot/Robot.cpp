@@ -39,13 +39,8 @@ void Robot::setPosition(int32_t x, int32_t y, int32_t z,const uint32_t* joints)
 
 void Robot::blinkLed(int32_t counter)
 {
-  static bool state = true;
   if(counter%10==0)
   {
-    if(state == true)
-      state = false;
-    else
-      state = true;
-     digitalWrite(LED_BUILTIN, state);
+    digitalToggle(LED_BUILTIN);
   }
 }
