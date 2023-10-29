@@ -3,7 +3,8 @@
 Robot::Robot():
     type(DEG),
     serwo(Serwo::getInstance()),
-    kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type}
+    kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type},
+    delay(Delay::getInstance())
 {
     legs={  Leg1::pin_1,Leg1::pin_2,Leg1::pin_3,
             Leg2::pin_1,Leg2::pin_2,Leg1::pin_3,
@@ -12,6 +13,15 @@ Robot::Robot():
             Leg5::pin_1,Leg5::pin_2,Leg5::pin_3,
             Leg6::pin_1,Leg6::pin_2,Leg6::pin_3};
     serwo.attach(legs);
+    pinMode(LED_BUILTIN,OUTPUT);
+    //https://stackoverflow.com/questions/7582546/using-generic-stdfunction-objects-with-member-functions-in-one-class
+    //using namespace std::placeholders;
+    //std::function<void(uint32_t)> f = std::bind(&Robot::blinkLed, this,std::placeholders::_1);
+    std::function<void(uint32_t)> f = [=](uint32_t counter)
+    {
+      this->blinkLed(counter);
+    }; 
+    delay.attach(f);
  }
 
 void Robot::setAngle(uint32_t angle, uint32_t joint)
@@ -25,4 +35,17 @@ void Robot::setPosition(int32_t x, int32_t y, int32_t z,const uint32_t* joints)
   setAngle(tmp._x,joints[0]);
   setAngle(tmp._y,joints[1]);
   setAngle(tmp._z,joints[2]);
+}
+
+void Robot::blinkLed(int32_t counter)
+{
+  static bool state = true;
+  if(counter%10==0)
+  {
+    if(state == true)
+      state = false;
+    else
+      state = true;
+     digitalWrite(LED_BUILTIN, state);
+  }
 }
