@@ -2,6 +2,7 @@
 #include "Serwo/Serwo.hpp"
 #include "Kinematics/kinematics.hpp"
 #include "RobotConstans.hpp"
+#include "MPU-6050/MPU6050.hpp"
 #include <array>
 #include "Delay/Delay.hpp"
 
@@ -21,10 +22,11 @@ class Robot
     private:
         std::array<uint32_t,18> legs;
         const bool type;
-        Serwo &serwo;
+        Serwo serwo;
         Kinematics kinematics;
-        Delay &delay;
-       
+        Delay delay;
+        MPU6050 imu;
+
         Robot();
         void setAngle(uint32_t angle, uint32_t joint);
         void blinkLed(int32_t counter);
