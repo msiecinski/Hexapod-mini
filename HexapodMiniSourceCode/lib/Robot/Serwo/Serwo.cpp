@@ -2,8 +2,7 @@
 #include <iterator>
 #include <utility>
 
-std::vector<std::pair<uint32_t,uint32_t>> Serwo::pwm; //first pin, second duty
-
+std::map<uint32_t,uint32_t>Serwo::pwm;
 Serwo::Serwo()
 {
     Timer3.initialize(PWMTIMEBASE);
@@ -14,7 +13,7 @@ void Serwo::attach(const std::initializer_list<uint32_t> pinx)
 {
     for(auto tmp:pinx)
       {
-        pwm.push_back(std::make_pair(tmp,int {}));
+        pwm.insert(std::make_pair(tmp,int {}));
         pinMode(tmp,OUTPUT);
       }
 }
@@ -59,5 +58,5 @@ void Serwo::setAngle(uint32_t angle,uint32_t joint,bool type )
     */
    if(type != false)
         angle *= (RADT0DEG);
-    pwm[joint].second = (angle<SERWOMINDEGREES) ? SERWOMINDUTY   : (angle>SERWOMAXDEGREES) ? SERWOMAXDUTY : ((uint32_t)((angle*RESOLUTION)+SERWOMINDUTY)); 
+    pwm[joint] = (angle<SERWOMINDEGREES) ? SERWOMINDUTY   : (angle>SERWOMAXDEGREES) ? SERWOMAXDUTY : ((uint32_t)((angle*RESOLUTION)+SERWOMINDUTY)); 
 }

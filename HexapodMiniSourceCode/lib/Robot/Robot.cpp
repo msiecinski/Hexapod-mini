@@ -6,12 +6,12 @@ Robot::Robot():
     kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type},
     delay(Delay::getInstance())
 {
-    legs={  Leg1::pin_1,Leg1::pin_2,Leg1::pin_3,
-            Leg2::pin_1,Leg2::pin_2,Leg1::pin_3,
-            Leg3::pin_1,Leg3::pin_2,Leg2::pin_3,
-            Leg4::pin_1,Leg4::pin_2,Leg4::pin_3,
-            Leg5::pin_1,Leg5::pin_2,Leg5::pin_3,
-            Leg6::pin_1,Leg6::pin_2,Leg6::pin_3};
+    legs={  Leg1::joint_1,Leg1::joint_2,Leg1::joint_3,
+            Leg2::joint_1,Leg2::joint_2,Leg1::joint_3,
+            Leg3::joint_1,Leg3::joint_2,Leg2::joint_3,
+            Leg4::joint_1,Leg4::joint_2,Leg4::joint_3,
+            Leg5::joint_1,Leg5::joint_2,Leg5::joint_3,
+            Leg6::joint_1,Leg6::joint_2,Leg6::joint_3};
     serwo.attach(legs);
     pinMode(LED_BUILTIN,OUTPUT);
     //https://stackoverflow.com/questions/7582546/using-generic-stdfunction-objects-with-member-functions-in-one-class

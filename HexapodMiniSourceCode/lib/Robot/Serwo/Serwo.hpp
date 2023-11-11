@@ -2,6 +2,7 @@
 
 #include <TimerThree.h>
 #include <vector>
+#include <map>
 #include <array>
 #include <initializer_list>
 #define _USE_MATH_DEFINES
@@ -36,7 +37,7 @@ class Serwo
         {
             for(auto tmp:pins)
             {
-                pwm.push_back(std::make_pair(tmp,int {}));
+                pwm.insert(std::make_pair(tmp,int {}));
                 pinMode(tmp,OUTPUT);
             }
         };
@@ -45,5 +46,5 @@ class Serwo
     private:
         Serwo();
         static void PWM50Hz(void) ;
-        static std::vector<std::pair<uint32_t,uint32_t>> pwm; //first pin, second duty
+        static std::map<uint32_t,uint32_t>pwm;
 };
