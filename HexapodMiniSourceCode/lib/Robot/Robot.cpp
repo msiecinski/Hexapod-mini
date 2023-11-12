@@ -1,28 +1,27 @@
 #include "Robot.hpp"
 
 Robot::Robot():
-    type(DEG),
-    serwo(Serwo::getInstance()),
-    kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type},
-    delay(Delay::getInstance())
+  type(DEG),
+  serwo(Serwo::getInstance()),
+  kinematics{A_1,A_2,A_3,E,rotateX,rotateY,rotateZ,type},
+  delay(Delay::getInstance())
 {
-    legs={  Leg1::joint_1,Leg1::joint_2,Leg1::joint_3,
-            Leg2::joint_1,Leg2::joint_2,Leg1::joint_3,
-            Leg3::joint_1,Leg3::joint_2,Leg2::joint_3,
-            Leg4::joint_1,Leg4::joint_2,Leg4::joint_3,
-            Leg5::joint_1,Leg5::joint_2,Leg5::joint_3,
-            Leg6::joint_1,Leg6::joint_2,Leg6::joint_3};
-    serwo.attach(legs);
-    pinMode(LED_BUILTIN,OUTPUT);
-    //https://stackoverflow.com/questions/7582546/using-generic-stdfunction-objects-with-member-functions-in-one-class
-    //using namespace std::placeholders;
-    //std::function<void(uint32_t)> f = std::bind(&Robot::blinkLed, this,std::placeholders::_1);
-    std::function<void(uint32_t)> f = [=](uint32_t counter)
-    {
-      this->blinkLed(counter);
-    }; 
-    delay.attach(f);
- }
+  serwo.attach({Leg1::joint_1,Leg1::joint_2,Leg1::joint_3,
+                Leg2::joint_1,Leg2::joint_2,Leg1::joint_3,
+                Leg3::joint_1,Leg3::joint_2,Leg2::joint_3,
+                Leg4::joint_1,Leg4::joint_2,Leg4::joint_3,
+                Leg5::joint_1,Leg5::joint_2,Leg5::joint_3,
+                Leg6::joint_1,Leg6::joint_2,Leg6::joint_3});
+  pinMode(LED_BUILTIN,OUTPUT);
+  //https://stackoverflow.com/questions/7582546/using-generic-stdfunction-objects-with-member-functions-in-one-class
+  //using namespace std::placeholders;
+  //std::function<void(uint32_t)> f = std::bind(&Robot::blinkLed, this,std::placeholders::_1);
+  std::function<void(uint32_t)> f = [=](uint32_t counter)
+  {
+    this->blinkLed(counter);
+  }; 
+  delay.attach(f);
+}
 
 void Robot::setAngle(uint32_t angle, uint32_t joint)
 { 

@@ -3,7 +3,6 @@
 #include "Kinematics/kinematics.hpp"
 #include "RobotConstans.hpp"
 #include "MPU-6050/MPU6050.hpp"
-#include <array>
 #include "Delay/Delay.hpp"
 
 
@@ -20,7 +19,6 @@ class Robot
         //tempolary public
         void setPosition(int32_t x, int32_t y, int32_t z,const uint32_t* joints);
     private:
-        std::array<uint32_t,18> legs;
         const bool type;
         Serwo serwo;
         Kinematics kinematics;

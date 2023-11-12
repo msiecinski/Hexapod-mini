@@ -1,6 +1,4 @@
 #include "Serwo.hpp"
-#include <iterator>
-#include <utility>
 
 std::map<uint32_t,uint32_t>Serwo::pwm;
 Serwo::Serwo()
