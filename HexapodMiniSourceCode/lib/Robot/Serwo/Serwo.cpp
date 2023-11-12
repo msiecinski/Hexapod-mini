@@ -13,7 +13,7 @@ void Serwo::attach(const std::initializer_list<uint32_t> pinx)
 {
     for(auto tmp:pinx)
       {
-        pwm.insert(std::make_pair(tmp,int {}));
+        pwm.emplace(tmp,int {});
         pinMode(tmp,OUTPUT);
       }
 }

@@ -37,7 +37,7 @@ class Serwo
         {
             for(auto tmp:pins)
             {
-                pwm.insert(std::make_pair(tmp,int {}));
+                pwm.emplace(tmp,int {});
                 pinMode(tmp,OUTPUT);
             }
         };
