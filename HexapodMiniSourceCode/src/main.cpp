@@ -19,7 +19,7 @@ void loop() {
   else
   {
    //a.setAngle(counter,Leg6::joint_2);
-   a.setPosition(-counter,counter,10,Leg6::jo1nts);
+   a.setPosition(-counter,counter,10,Leg6::joints);
     counter+=5;
   }
   delay(500);

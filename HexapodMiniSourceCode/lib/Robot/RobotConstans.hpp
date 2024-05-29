@@ -4,32 +4,32 @@
 namespace Leg1
 {
    constexpr uint32_t joint_1 = 8, joint_2 = 9, joint_3 = 10 ;
-   constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+   constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
 };
 namespace Leg2
 {
    constexpr uint32_t joint_1 = 5, joint_2 = 6, joint_3 = 7;
-   constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+   constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
 };
 namespace Leg3
 {
    constexpr uint32_t joint_1 = 2, joint_2 = 3, joint_3 = 4  ;
-   constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+   constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
  };
 namespace Leg4
 {
     constexpr uint32_t joint_1 = 41, joint_2 = 40, joint_3 = 39 ;
-    constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+    constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
  };
 namespace Leg5
 {
    constexpr uint32_t joint_1 = 38, joint_2 = 37, joint_3 = 36 ;
-   constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+   constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
  };
 namespace Leg6
 {
     constexpr uint32_t joint_1 = 35, joint_2 = 34, joint_3 = 33 ;
-    constexpr uint32_t jo1nts[3]{joint_1,joint_2,joint_3};
+    constexpr uint32_t joints[3]{joint_1,joint_2,joint_3};
 };
 
 
