@@ -51,3 +51,5 @@ constexpr double rotateY=(M_PI/2);
 constexpr double rotateZ=M_PI;
 constexpr bool   DEG =  false;
 constexpr bool   RAD =  true;
+
+#define _debug_

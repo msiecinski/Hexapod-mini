@@ -3,7 +3,7 @@
 #include <TimerOne.h>
 #include <vector>
 
-constexpr uint32_t DELAYTIMER1     =    50000;                   //!!!!!!!!!!!!!!!!!!!!!!!;
+constexpr uint32_t DELAYTIMER1     =    50000;                   //!!!!!!!!!!!!!!!!!!!!!!! microseconds
 
 class Delay
 {

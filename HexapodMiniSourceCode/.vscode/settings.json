@@ -1,6 +1,7 @@
 {
     "cmake.configureOnOpen": false,
     "files.associations": {
-        "array": "cpp"
+        "array": "cpp",
+        "initializer_list": "cpp"
     }
 }

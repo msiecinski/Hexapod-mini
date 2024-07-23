@@ -54,7 +54,7 @@ void Serwo::setAngle(uint32_t angle,uint32_t joint,bool type )
         else calculate
        convert angle too duty and cut if>402(0x1FF)
     */
-   if(type != false)
+   if(type != DEG)
         angle *= (RADT0DEG);
     pwm[joint] = (angle<SERWOMINDEGREES) ? SERWOMINDUTY   : (angle>SERWOMAXDEGREES) ? SERWOMAXDUTY : ((uint32_t)((angle*RESOLUTION)+SERWOMINDUTY)); 
 }
